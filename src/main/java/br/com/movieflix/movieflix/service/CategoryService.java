@@ -14,11 +14,9 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryService {
     private final CategoryRepository repository;
-    private final CategoryRepository categoryRepository;
 
-    public CategoryService(CategoryRepository repository, CategoryRepository categoryRepository) {
+    public CategoryService(CategoryRepository repository) {
         this.repository = repository;
-        this.categoryRepository = categoryRepository;
     }
 
     //Tenho que receber um request, transformar em Category e transformar em um Response
@@ -35,7 +33,7 @@ public class CategoryService {
 
     public CategoryResponse save(CategoryRequest request) {
         Category category = CategoryMapper.mapToCategory(request);
-        category = categoryRepository.save(category);
+        category = repository.save(category);
         return CategoryMapper.mapToResponse(category);
     }
 

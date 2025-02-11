@@ -41,4 +41,7 @@ public class StreamingService {
         repository.deleteById(id);
     }
 
+    public List<Streaming> findAllByIds(List<Long> streamings) {
+        return repository.findAllById(streamings);
+    }
 }

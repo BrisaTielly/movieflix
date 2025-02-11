@@ -41,4 +41,7 @@ public class CategoryService {
         repository.deleteById(id);
     }
 
+    public List<Category> findAllByIds(List<Long> categories) {
+        return repository.findAllById(categories);
+    }
 }

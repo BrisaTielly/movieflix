@@ -36,7 +36,7 @@ public class Movie {
     private Long id;
 
     @Column(length = 100, nullable = false)
-    private String name;
+    private String title;
 
     private String description;
 

@@ -4,6 +4,7 @@ import br.com.movieflix.movieflix.entity.Category;
 import br.com.movieflix.movieflix.request.CategoryRequest;
 import br.com.movieflix.movieflix.response.CategoryResponse;
 import lombok.experimental.UtilityClass;
+import org.springframework.stereotype.Component;
 
 @UtilityClass
 public class CategoryMapper {

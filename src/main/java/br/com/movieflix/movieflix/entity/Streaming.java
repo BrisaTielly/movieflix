@@ -18,6 +18,6 @@ public class Streaming {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100, nullable = false)
     String name;
 }

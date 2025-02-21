@@ -54,7 +54,7 @@ public class MovieController {
     @GetMapping("/search")
     public ResponseEntity<List<MovieResponse>> findMovieByCategories(@RequestParam Long categoryId){
         List<MovieResponse> moviesByCategories = service.findMovieByCategories(categoryId);
-        return ResponseEntity.status(HttpStatus.FOUND).body(moviesByCategories);
+        return ResponseEntity.ok(moviesByCategories);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -45,13 +45,13 @@ public class MovieService {
     }
 
     public MovieResponse save(MovieRequest request) {
-        //Retorna uma lista de categorias com a lista de ids que foi passada de argumento
+        //Retorna uma lista de categorias com a lista de 'ids' passada de argumento
         List<Category> categories = categoryService.findAllByIds(request.categories());
         //Faz o mesmo com os 'streamings'
         List<Streaming> streamings = streamingService.findAllByIds(request.streamings());
         Movie movie = MovieMapper.mapToMovie(request);
         movie.setCategories(categories); //Passando uma lista de categorias
-        movie.setStreamings(streamings); //Passando uma lista de Streamings
+        movie.setStreamings(streamings); //Passando uma lista de 'Streamings'
         movie = repository.save(movie);
         return MovieMapper.mapToResponse(movie);
     }
@@ -85,6 +85,11 @@ public class MovieService {
         }
 
         return Optional.empty(); // Retorna vazio se o filme não existir
+    }
+
+    public List<MovieResponse> findMovieByCategories(Long categoryId) {
+        List<Movie> movieByCategories = repository.findMovieByCategories(List.of(Category.builder().id(categoryId).build()));
+        return movieByCategories.stream().map(MovieMapper::mapToResponse).toList();
     }
 
 

@@ -1,5 +1,6 @@
 package br.com.movieflix.movieflix.controller;
 
+import br.com.movieflix.movieflix.entity.Category;
 import br.com.movieflix.movieflix.repository.CategoryRepository;
 import br.com.movieflix.movieflix.request.MovieRequest;
 import br.com.movieflix.movieflix.response.MovieResponse;
@@ -48,6 +49,12 @@ public class MovieController {
     public ResponseEntity<MovieResponse> update(@PathVariable Long id, @RequestBody MovieRequest movieRequest){
         Optional<MovieResponse> update = service.update(id, movieRequest);
         return update.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<MovieResponse>> findMovieByCategories(@RequestParam Long categoryId){
+        List<MovieResponse> moviesByCategories = service.findMovieByCategories(categoryId);
+        return ResponseEntity.status(HttpStatus.FOUND).body(moviesByCategories);
     }
 
     @DeleteMapping("/delete/{id}")
